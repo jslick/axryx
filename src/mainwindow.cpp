@@ -2,10 +2,11 @@
 #include "webcontainer.h"
 
 #include <QAction>
+#include <QSettings>
+#include <QTimer>
 #include <QTabWidget>
 #include <QToolButton>
 #include <QWebEngineView>
-#include <QSettings>
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent),
@@ -39,6 +40,7 @@ MainWindow::MainWindow(QWidget* parent)
     restoreState(settings.value("mainwindow/windowState").toByteArray());
 
     this->addTab();
+    QTimer::singleShot(0, focusAddressAction, &QAction::trigger);
 }
 
 MainWindow::~MainWindow()
