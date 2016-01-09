@@ -18,6 +18,7 @@ public:
 signals:
 
 public slots:
+    void locationFocusRequested();
 
 private:
     QVBoxLayout*    mainLayout = 0;

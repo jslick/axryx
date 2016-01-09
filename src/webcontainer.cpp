@@ -69,3 +69,9 @@ QWebEngineView* WebContainer::getWebView() const
 {
     return this->webView;
 }
+
+void WebContainer::locationFocusRequested()
+{
+    this->locationEdit->setFocus();
+    this->locationEdit->selectAll();
+}

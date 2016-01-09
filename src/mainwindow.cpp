@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "webcontainer.h"
 
+#include <QAction>
 #include <QTabWidget>
 #include <QToolButton>
 #include <QWebEngineView>
@@ -23,6 +24,15 @@ MainWindow::MainWindow(QWidget* parent)
     addTabButton->setShortcut(QKeySequence::AddTab);
     this->webTabs->setCornerWidget(addTabButton, Qt::TopRightCorner);
     connect(addTabButton, SIGNAL(clicked()), SLOT(addTab()));
+
+    QAction* focusAddressAction = new QAction(tr("Focus location"), this);
+    focusAddressAction->setShortcut(QKeySequence("Ctrl+L"));
+    connect(focusAddressAction, &QAction::triggered, [this]()
+    {
+        if (WebContainer* web = dynamic_cast<WebContainer*>(this->webTabs->currentWidget()))
+            web->locationFocusRequested();
+    });
+    this->addAction(focusAddressAction);
 
     QSettings settings;
     restoreGeometry(settings.value("mainwindow/geometry").toByteArray());
