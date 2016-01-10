@@ -16,7 +16,9 @@ public:
     ~MainWindow();
 
     // TabHost
-    QWebEnginePage* createTab();
+    QWebEnginePage* createTab() override;
+
+    QMenu* getSettingsMenu() override;
 
 protected:
     void closeEvent(QCloseEvent* event);
@@ -24,10 +26,13 @@ protected:
 private slots:
     QWebEnginePage* addTab(bool background = false);
 
+    void createWindow();
+
     void updateWindowTitle();
 
 private:
     QTabWidget* webTabs = 0;
+    QMenu* settingsMenu = 0;
 };
 
 #endif // MAINWINDOW_H

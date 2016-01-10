@@ -20,6 +20,7 @@ SOURCES += \
     webpage.cpp
 
 HEADERS += \
+    common.h \
     mainwindow.h \
     tabhost.h \
     webcontainer.h \
