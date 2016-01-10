@@ -18,7 +18,12 @@ MainWindow::MainWindow(QWidget* parent)
 
     this->webTabs->setTabsClosable(true);
     this->webTabs->setMovable(true);
-    connect(this->webTabs, &QTabWidget::tabCloseRequested, this->webTabs, &QTabWidget::removeTab);
+    connect(this->webTabs, &QTabWidget::tabCloseRequested, [this](int index)
+    {
+        this->webTabs->removeTab(index);
+        if (this->webTabs->count() == 0)
+            this->addTab();
+    });
 
     QToolButton* addTabButton = new QToolButton(this);
     addTabButton->setIcon(QIcon::fromTheme("tab-new"));
