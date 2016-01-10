@@ -22,7 +22,7 @@ protected:
     void closeEvent(QCloseEvent* event);
 
 private slots:
-    QWebEnginePage* addTab();
+    QWebEnginePage* addTab(bool background = false);
 
 private:
     QTabWidget* webTabs = 0;

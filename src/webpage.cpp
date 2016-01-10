@@ -10,5 +10,6 @@ WebPage::WebPage(TabHost* tabHost, QObject* parent) :
 
 QWebEnginePage* WebPage::createWindow(QWebEnginePage::WebWindowType type)
 {
+    // TODO:  `type`
     return this->tabHost ? this->tabHost->createTab() : QWebEnginePage::createWindow(type);
 }

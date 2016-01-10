@@ -50,7 +50,7 @@ MainWindow::~MainWindow()
 
 QWebEnginePage* MainWindow::createTab()
 {
-    return this->addTab();
+    return this->addTab(true);
 }
 
 void MainWindow::closeEvent(QCloseEvent* event)
@@ -61,11 +61,12 @@ void MainWindow::closeEvent(QCloseEvent* event)
     QMainWindow::closeEvent(event);
 }
 
-QWebEnginePage* MainWindow::addTab()
+QWebEnginePage* MainWindow::addTab(bool background)
 {
     WebContainer* web = new WebContainer(this);
     this->webTabs->addTab(web, tr("New tab"));
-    this->webTabs->setCurrentWidget(web);
+    if (!background)
+        this->webTabs->setCurrentWidget(web);
     connect(web->getWebView(), &QWebEngineView::titleChanged, [this,web](QString title)
     {
         if (title.length() > 50)
