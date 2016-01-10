@@ -10,7 +10,7 @@ QT += webenginewidgets
 
 CONFIG += c++11
 
-TARGET = abrowser
+TARGET = axryx
 TEMPLATE = app
 
 SOURCES += \

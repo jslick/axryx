@@ -1,3 +1,3 @@
 #pragma once
 
-#define APP_NAME "abrowser"
+#define APP_NAME "Axryx"
