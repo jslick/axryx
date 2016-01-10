@@ -16,8 +16,11 @@ TEMPLATE = app
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    webcontainer.cpp
+    webcontainer.cpp \
+    webpage.cpp
 
 HEADERS += \
     mainwindow.h \
-    webcontainer.h
+    tabhost.h \
+    webcontainer.h \
+    webpage.h

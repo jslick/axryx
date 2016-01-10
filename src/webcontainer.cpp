@@ -1,4 +1,5 @@
 #include "webcontainer.h"
+#include "webpage.h"
 
 #include <QRegularExpression>
 #include <QVBoxLayout>
@@ -9,8 +10,9 @@
 #include <QWebEngineView>
 #include <QWebEngineProfile>
 
-WebContainer::WebContainer(QWidget* parent)
+WebContainer::WebContainer(TabHost* tabHost, QWidget* parent)
     : QWidget(parent),
+      tabHost(tabHost),
       mainLayout(new QVBoxLayout),
       locationEdit(new QLineEdit(this)),
       webView(new QWebEngineView(this))
@@ -61,6 +63,7 @@ WebContainer::WebContainer(QWidget* parent)
         this->locationEdit->setText(url.url());
     });
 
+    this->webView->setPage(new WebPage(this->tabHost, this));
     this->webView->page()->profile()->setPersistentCookiesPolicy(QWebEngineProfile::NoPersistentCookies);
     this->mainLayout->addWidget(this->webView);
 }
@@ -68,6 +71,11 @@ WebContainer::WebContainer(QWidget* parent)
 QWebEngineView* WebContainer::getWebView() const
 {
     return this->webView;
+}
+
+QWebEnginePage* WebContainer::getWebPage() const
+{
+    return this->webView ? this->webView->page() : nullptr;
 }
 
 void WebContainer::locationFocusRequested()

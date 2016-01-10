@@ -48,6 +48,11 @@ MainWindow::~MainWindow()
 
 }
 
+QWebEnginePage* MainWindow::createTab()
+{
+    return this->addTab();
+}
+
 void MainWindow::closeEvent(QCloseEvent* event)
 {
     QSettings settings;
@@ -56,7 +61,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
     QMainWindow::closeEvent(event);
 }
 
-void MainWindow::addTab()
+QWebEnginePage* MainWindow::addTab()
 {
     WebContainer* web = new WebContainer(this);
     this->webTabs->addTab(web, tr("New tab"));
@@ -70,4 +75,6 @@ void MainWindow::addTab()
         if (pos >= 0)
             this->webTabs->setTabText(pos, title);
     });
+
+    return web->getWebPage();
 }
