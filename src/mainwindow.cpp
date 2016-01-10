@@ -8,6 +8,8 @@
 #include <QToolButton>
 #include <QWebEngineView>
 
+#define APP_NAME "abrowser"
+
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent),
       webTabs(new QTabWidget(this))
@@ -24,6 +26,7 @@ MainWindow::MainWindow(QWidget* parent)
         if (this->webTabs->count() == 0)
             this->addTab();
     });
+    connect(this->webTabs, &QTabWidget::currentChanged, this, &MainWindow::updateWindowTitle);
 
     QToolButton* addTabButton = new QToolButton(this);
     addTabButton->setIcon(QIcon::fromTheme("tab-new"));
@@ -79,8 +82,22 @@ QWebEnginePage* MainWindow::addTab(bool background)
 
         int pos = this->webTabs->indexOf(web);
         if (pos >= 0)
+        {
             this->webTabs->setTabText(pos, title);
+
+            if (pos == this->webTabs->currentIndex())
+                this->updateWindowTitle();
+        }
     });
 
     return web->getWebPage();
+}
+
+void MainWindow::updateWindowTitle()
+{
+    const int current = this->webTabs->currentIndex();
+    if (current >= 0)
+        this->setWindowTitle(this->webTabs->tabText(current) + " - " APP_NAME);
+    else
+        this->setWindowTitle(APP_NAME);
 }

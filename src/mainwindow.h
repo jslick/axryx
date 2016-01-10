@@ -24,6 +24,8 @@ protected:
 private slots:
     QWebEnginePage* addTab(bool background = false);
 
+    void updateWindowTitle();
+
 private:
     QTabWidget* webTabs = 0;
 };
