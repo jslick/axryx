@@ -25,3 +25,6 @@ HEADERS += \
     tabhost.h \
     webcontainer.h \
     webpage.h
+
+RESOURCES += \
+    icons.qrc

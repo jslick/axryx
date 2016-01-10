@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="axryx.png">icons/axryx.png</file>
+    </qresource>
+</RCC>

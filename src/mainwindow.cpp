@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget* parent)
       webTabs(new QTabWidget(this)),
       settingsMenu(new QMenu(tr("Settings"), this))
 {
-    this->setWindowIcon(QIcon::fromTheme("internet-web-browser"));
+    this->setWindowIcon(QIcon(":/icons/axryx.png"));
 
     this->setCentralWidget(this->webTabs);
 
