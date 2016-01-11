@@ -17,6 +17,9 @@ MainWindow::MainWindow(QWidget* parent)
 {
     this->setWindowIcon(QIcon(":/icons/axryx.png"));
 
+    if (!QIcon::hasThemeIcon("tab-new"))
+        QIcon::setThemeName("oxygen");
+
     this->setCentralWidget(this->webTabs);
 
     // Actions

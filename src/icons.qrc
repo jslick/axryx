@@ -2,4 +2,13 @@
     <qresource prefix="/icons">
         <file alias="axryx.png">icons/axryx.png</file>
     </qresource>
+    <qresource prefix="/icons/oxygen">
+        <file alias="32x32/actions/configure.png">icons/oxygen/32x32/actions/configure.png</file>
+        <file alias="32x32/actions/go-next.png">icons/oxygen/32x32/actions/go-next.png</file>
+        <file alias="32x32/actions/go-previous.png">icons/oxygen/32x32/actions/go-previous.png</file>
+        <file alias="32x32/actions/tab-new.png">icons/oxygen/32x32/actions/tab-new.png</file>
+        <file alias="32x32/actions/view-refresh.png">icons/oxygen/32x32/actions/view-refresh.png</file>
+        <file alias="32x32/actions/window-new.png">icons/oxygen/32x32/actions/window-new.png</file>
+        <file alias="index.theme">icons/oxygen/index.theme</file>
+    </qresource>
 </RCC>
