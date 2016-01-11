@@ -28,3 +28,5 @@ HEADERS += \
 
 RESOURCES += \
     icons.qrc
+
+win32:  RC_FILE = app.rc
