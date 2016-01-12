@@ -77,6 +77,7 @@ WebContainer::WebContainer(TabHost* tabHost, QWidget* parent)
     connect(this->webView, &QWebEngineView::urlChanged, [this](QUrl url)
     {
         this->locationEdit->setText(url.url());
+        this->locationEdit->setCursorPosition(0);
     });
 
     this->webView->setPage(new WebPage(this->tabHost, this));
