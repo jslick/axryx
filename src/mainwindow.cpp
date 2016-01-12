@@ -41,7 +41,9 @@ MainWindow::MainWindow(QWidget* parent)
     this->webTabs->setMovable(true);
     connect(this->webTabs, &QTabWidget::tabCloseRequested, [this](int index)
     {
+        QWidget* widget = this->webTabs->widget(index);
         this->webTabs->removeTab(index);
+        delete widget;
         if (this->webTabs->count() == 0)
             this->addTab();
     });
