@@ -5,6 +5,7 @@
 #include <QRegularExpression>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QAction>
 #include <QKeyEvent>
 #include <QLineEdit>
 #include <QPushButton>
@@ -59,6 +60,23 @@ WebContainer::WebContainer(TabHost* tabHost, QWidget* parent)
     locationLayout->addWidget(settingsButton);
 
     this->mainLayout->addLayout(locationLayout);
+
+    // Zooms
+    QAction* zoomOutAction = new QAction(tr("Zoom out"), this);
+    zoomOutAction->setShortcut(QKeySequence::ZoomOut);
+    this->addAction(zoomOutAction);
+    connect(zoomOutAction, &QAction::triggered, [this]
+    {
+        this->webView->page()->setZoomFactor(this->webView->page()->zoomFactor() * 0.9);
+    });
+
+    QAction* zoomInAction = new QAction(tr("Zoom in"), this);
+    zoomInAction->setShortcut(QKeySequence::ZoomIn);
+    this->addAction(zoomInAction);
+    connect(zoomInAction, &QAction::triggered, [this]
+    {
+        this->webView->page()->setZoomFactor(this->webView->page()->zoomFactor() * (1/0.9));
+    });
 
     connect(this->locationEdit, &QLineEdit::returnPressed, [this]()
     {
